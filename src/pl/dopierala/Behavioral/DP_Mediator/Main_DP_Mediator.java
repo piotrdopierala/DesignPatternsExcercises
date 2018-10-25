@@ -8,7 +8,7 @@ public class Main_DP_Mediator {
         TextBox txtb = new TextBox("TextBox1",mediator);
         Slider sldr = new Slider("Slider1",mediator);
 
-        System.out.println("change in txtb");
-        txtb.setValue("new value");
+        System.out.println("change in slider");
+        sldr.setValue("new value");
     }
 }

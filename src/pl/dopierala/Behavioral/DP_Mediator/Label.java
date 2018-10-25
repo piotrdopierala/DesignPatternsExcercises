@@ -14,6 +14,7 @@ public class Label implements UIControl {
     @Override
     public void controlChanged(UIControl uiObject) {
         System.out.println(name+": notified that "+uiObject.getName()+" changed.");
+        System.out.println(name+": New value is " + uiObject.getValue() + ".");
     }
 
     public void setValue(String value) {

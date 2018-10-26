@@ -1,20 +1,45 @@
 package pl.dopierala.Behavioral.DP_Memento;
 
+import java.util.LinkedList;
+
 public class Main_DP_Memento {
     public static void main(String[] args) {
-        WorkflowDesigner wd1 = new WorkflowDesigner();
-        AddCommand cmdAdd = new AddCommand();
 
-        cmdAdd.execute(wd1,"cmd1");
-        cmdAdd.execute(wd1,"cmd2");
-        cmdAdd.execute(wd1,"cmd3");
-        cmdAdd.execute(wd1,"cmd4");
+        WorkflowDesigner designer = new WorkflowDesigner();
+        designer.createWorkflow("Test");
 
-        cmdAdd.undo(wd1);
-        cmdAdd.undo(wd1);
+        LinkedList<WorkflowCommand> commands = runCommands(designer);
 
-        cmdAdd.execute(wd1,"cmd5");
+        designer.print();
+
+        undoLastCommand(commands);
+        designer.print();
+
+        undoLastCommand(commands);
+        designer.print();
+
+    }
+
+    private static void undoLastCommand(LinkedList<WorkflowCommand> commands){
+        if(!commands.isEmpty())
+            commands.removeLast().undo();
+    }
 
 
+    private static LinkedList<WorkflowCommand> runCommands(WorkflowDesigner designer) {
+        LinkedList<WorkflowCommand> commands = new LinkedList<>();
+        WorkflowCommand cmd = new AddCommand(designer,"Create application");
+        commands.addLast(cmd);
+        cmd.execute();
+
+        cmd=new AddCommand(designer,"Submit application");
+        commands.addLast(cmd);
+        cmd.execute();
+
+        cmd = new AddCommand(designer,"Application approved");
+        commands.addLast(cmd);
+        cmd.execute();
+
+        return commands;
     }
 }

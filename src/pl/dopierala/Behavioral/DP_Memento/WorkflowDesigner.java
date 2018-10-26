@@ -1,26 +1,71 @@
 package pl.dopierala.Behavioral.DP_Memento;
 
-//Object of witch state we will save in memento.
 public class WorkflowDesigner {
-    private String workflow = "";
+    private Workflow workflow;
 
-    public DesignerMemento createMemento() {
-        return new DesignerMemento(workflow);
+    public void createWorkflow(String name){
+        workflow = new Workflow(name);
     }
 
-    public void setMemento(DesignerMemento memento) {
-        this.workflow = memento.getState();
-        System.out.println("Memento restored");
-        System.out.println("current workflow is:" + workflow);
+    public Workflow getWorkflow(){
+        return workflow;
     }
 
-    public void execute(String command) {
-        if (workflow.isEmpty()) {
-            workflow += command;
-        } else {
-            workflow += "," + command;
+    //creates Memento with current state
+    public Memento getMemento(){
+        if (workflow == null) {
+                return new Memento();
         }
-        System.out.println("Cmd executed.");
-        System.out.println("current workflow is:" + workflow);
+        return new Memento(workflow.getSteps(),workflow.getName());
+
     }
+
+
+    public void setMemento(Memento memento) {
+        if (memento.isEmpty()) {
+            this.workflow = null;
+        }else{
+            this.workflow = new Workflow(memento.getName(),memento.getSteps());
+        }
+
+    }
+
+    public void addStep(String step){
+        workflow.addStep(step);
+    }
+
+    public void removeStep(String step){
+        workflow.removeStep(step);
+    }
+
+    public void print(){
+        System.out.println(workflow);
+    }
+
+    //Memento
+    public class Memento{
+        private String[] steps;
+        private String name;
+
+        private Memento(){};
+
+        private Memento(String[] steps,String name){ //private memento, only designer can create memento objects
+            this.steps=steps;
+            this.name=name;
+        }
+
+        private String[] getSteps(){
+            return steps;
+        }
+
+        private String getName(){
+            return name;
+        }
+
+        private boolean isEmpty(){
+            return this.getSteps() == null && this.getName()==null;
+        }
+    }
+
 }
+

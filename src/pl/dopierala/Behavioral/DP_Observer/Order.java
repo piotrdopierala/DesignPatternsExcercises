@@ -5,9 +5,14 @@ import java.util.List;
 
 public class Order {
 
+    private String id;
     private int totalPrice;
     private int quantity;
     private List<OrderObserver> observers = new LinkedList<>();
+
+    public Order(String id) {
+        this.id = id;
+    }
 
     public void attach(OrderObserver observer){
         observers.add(observer);
@@ -23,6 +28,12 @@ public class Order {
                 observers) {
             obs.updated(this);
         }
+    }
+
+    public void addItem(int price){
+        totalPrice+=price;
+        quantity++;
+        notifyObservers();
     }
 
     public void setTotalPrice(int totalPrice) {

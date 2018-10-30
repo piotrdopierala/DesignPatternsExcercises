@@ -2,7 +2,7 @@ package pl.dopierala.Behavioral.DP_Observer;
 
 public class Main_DP_Observer {
     public static void main(String[] args) {
-        Order o1 = new Order();
+        Order o1 = new Order("important order");
         PriceObserver priceObs = new PriceObserver();
         QuantityObserver quantObs = new QuantityObserver();
 

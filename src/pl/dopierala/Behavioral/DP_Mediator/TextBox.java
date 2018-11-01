@@ -23,7 +23,7 @@ public class TextBox implements UIControl {
     @Override
     public void controlChanged(UIControl uiObject) {
         System.out.println(name+": notified that "+uiObject.getName()+" changed.");
-        System.out.println(name+": New value is " + uiObject.getValue() + ".");
+        System.out.println(name+": OrderStateNew value is " + uiObject.getValue() + ".");
         mediatedUpdate=true;
         this.setValue(uiObject.getValue());
         mediatedUpdate=false;

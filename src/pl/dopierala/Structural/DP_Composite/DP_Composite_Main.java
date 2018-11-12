@@ -1,3 +1,5 @@
+package pl.dopierala.Structural.DP_Composite;
+
 public class DP_Composite_Main {
     public static void main(String[] args) {
         File root1 = createTreeOne();

@@ -1,3 +1,4 @@
+package pl.dopierala.Structural.DP_Composite;
 //component base class for composite pattern
 //defines operations applicable both leaf&composite
 

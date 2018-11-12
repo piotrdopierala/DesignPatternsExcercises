@@ -1,3 +1,6 @@
+package pl.dopierala.Structural.DP_Composite;
+
+
 public class BinaryFile extends File {
 
     private String name;

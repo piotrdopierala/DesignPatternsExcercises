@@ -1,3 +1,6 @@
+package pl.dopierala.Structural.DP_Composite;
+
+
 import java.util.ArrayList;
 import java.util.List;
 

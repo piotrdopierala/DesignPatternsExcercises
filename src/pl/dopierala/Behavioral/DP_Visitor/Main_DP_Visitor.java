@@ -2,7 +2,9 @@ package pl.dopierala.Behavioral.DP_Visitor;
 
 public class Main_DP_Visitor {
     public static void main(String[] args) {
-
+        Employee emps = buildOrganistation();
+        Visitor visitor = new PrintVisitor();
+        visitOrgStructure(emps,visitor);
     }
 
     private static Employee buildOrganistation(){
@@ -21,5 +23,10 @@ public class Main_DP_Visitor {
         VicePresident vp = new VicePresident("Bill",pl1,pl2);
 
         return vp;
+    }
+
+    private static void visitOrgStructure(Employee emp, Visitor visitor){
+        emp.accept(visitor);
+        emp.getDirectReports().forEach(e->visitOrgStructure(e,visitor));
     }
 }

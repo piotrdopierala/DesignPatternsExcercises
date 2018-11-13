@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class VicePresident extends AbstractEmployee {
-    List<Employee> directReports = new ArrayList<>();
+    private List<Employee> directReports = new ArrayList<>();
 
     public VicePresident(String name, Employee... employees) {
         super(name);
@@ -16,5 +16,10 @@ public class VicePresident extends AbstractEmployee {
     @Override
     public Collection<Employee> getDirectReports() {
         return directReports;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

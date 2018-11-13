@@ -25,7 +25,7 @@ public abstract class AbstractEmployee implements Employee{
     }
 
     @Override
-    public void setPerformacneRating(int rating) {
+    public void setPerformanceRating(int rating) {
         this.performanceRaiting=rating;
     }
 

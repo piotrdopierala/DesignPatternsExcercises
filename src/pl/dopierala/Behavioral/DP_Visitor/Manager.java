@@ -17,4 +17,9 @@ public class Manager extends AbstractEmployee {
     public Collection<Employee> getDirectReports() {
         return directReports;
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

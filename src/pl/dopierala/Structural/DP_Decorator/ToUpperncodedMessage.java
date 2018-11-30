@@ -1,3 +1,4 @@
+package pl.dopierala.Structural.DP_Decorator;
 public class ToUpperncodedMessage implements Message {
     private Message obj;
 

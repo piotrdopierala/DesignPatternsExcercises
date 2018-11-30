@@ -1,3 +1,4 @@
+package pl.dopierala.Structural.DP_Decorator;
 public class TextMessage implements Message {
 
     private String msg;

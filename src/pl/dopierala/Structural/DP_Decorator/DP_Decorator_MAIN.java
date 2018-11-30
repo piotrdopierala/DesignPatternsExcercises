@@ -1,3 +1,4 @@
+package pl.dopierala.Structural.DP_Decorator;
 import java.io.*;
 
 public class DP_Decorator_MAIN {
